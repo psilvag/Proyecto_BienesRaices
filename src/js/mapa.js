@@ -20,7 +20,9 @@
         autoPan:true    // sigue el mapa
     }).addTo(mapa)
 
-    // 
+     /**
+     * movemos el pin de ubicacion 
+     */
     marker.on('moveend',e=>{
         marker=e.target
         const posicion =marker.getLatLng()// devuelve la posicion del PIN
@@ -31,7 +33,15 @@
       geocodeService.reverse().latlng(posicion,15).run((err,res)=>{
            if(err){console.log(err)} 
            marker.bindPopup(res.address.LongLabel)
+
+      // llenar en views/propiedades/crear.pug
+      document.querySelector(".calle").textContent=res?.address.Address ?? ""
+      document.querySelector("#calle").value=res?.address?.Address ?? ""
+      document.querySelector("#lat").value=res?.latlng?.lat ?? ""
+      document.querySelector("#lng").value=res?.latlng?.lng ?? ""
       })
+
+     
 
     })
 }

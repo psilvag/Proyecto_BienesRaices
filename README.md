@@ -114,3 +114,5 @@ en una terminal los webPacks
 en otra terminal , ejecución de la base de datos
            npm run server 
 
+credenciales para entrar al sistema: 
+

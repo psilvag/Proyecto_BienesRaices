@@ -56,8 +56,17 @@ block contenido
                                     - let n_wc=1
                                         while n_wc < 9
                                             option(value=n_wc) #{n_wc++}
-
+                    div.border-gray-200.border-t.py-5.space-y-5
+                        h3.text-lg.leading-6.font-medium.text-gray-900 Ubicacion
+                        p.text.gray-600 Ubica la propiedad en el mapa
                         #mapa.h-96
+                        
+                        div
+                            p.calle
+                        input(type="hidden" name="calle" id="calle")
+                        input(type="hidden" name="lat"   id="lat")
+                        input(type="hidden" name="lng"   id="lng")
+
 
 block scripts
     script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js") -leaflet es una alternativa gratuita a google
