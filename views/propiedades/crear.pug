@@ -19,7 +19,9 @@ block contenido
                         div   
                             label.block.text-sm.text-gray-400.mb-3.font-bold(for="titulo") Titulo de anuncio
                             input#titulo.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(placeholder="Titulo de la propiedad, ej. Casa en la playa" type="text" name="titulo") 
-
+                        div   
+                            label.block.text-sm.text-gray-400.mb-3.font-bold(for="descripcion") Descripcion
+                            textarea#descripcion.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(placeholder="Descripcion de la propiedad" type="text" name="titulo") 
 
                         div(class="md:flex md:gap-4 space-y-5 md:space-y-0")
                             div(class="md:w-1/2") 
@@ -60,7 +62,7 @@ block contenido
                         h3.text-lg.leading-6.font-medium.text-gray-900 Ubicacion
                         p.text.gray-600 Ubica la propiedad en el mapa
                         #mapa.h-96
-                        
+
                         div
                             p.calle
                         input(type="hidden" name="calle" id="calle")

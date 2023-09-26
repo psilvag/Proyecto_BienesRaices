@@ -107,12 +107,14 @@ PERMITE QUE CSS Y JAVASCRIPT SE COMPILEN EN UNO SOLO
 npm i -D concurrently
 
 
-EJECUCION DEL PROYECTO: 
+-------------EJECUCION DEL PROYECTO-----------: 
 en una terminal los webPacks 
            npm run dev 
 
 en otra terminal , ejecución de la base de datos
            npm run server 
 
-credenciales para entrar al sistema: 
+-----------ENLACE DE AUTENTICACION: http://localhost:4000/auth/login
+
+-----------ENLACE A MAILTRAP: https://mailtrap.io/home autenticado con correo mmusk100@gmail.com
 
