@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import db from "../config/DB";
+import db from "../config/DB.js";
 
 const Propiedad= db.define("propiedades",{
     id:{
