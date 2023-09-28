@@ -1,4 +1,3 @@
-
 import jwt from 'jsonwebtoken'
 
 //Le pasamos el objeto datos del usuario para que en el payload almacene esos datos

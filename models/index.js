@@ -8,7 +8,7 @@ Propiedad.belongsTo(Precio,{foreignKey:'precioId'})
 // Relacion propiedad con categorias uno-muchos
 Propiedad.belongsTo(Categoria,{foreignKey:'categoriaId'})
 // Relacion propiedad con usuario  uno-muchos
-Propiedad.belongsTo(Usuario,{foreignKey:'ususarioId'})
+Propiedad.belongsTo(Usuario,{foreignKey:'usuarioId'})
 
 export{
 Categoria,
