@@ -23,10 +23,10 @@ block contenido
                         p.text.gray-600 Añade información sobre una propiedad en venta
                         div   
                             label.block.text-sm.text-gray-400.mb-3.font-bold(for="titulo") Titulo de anuncio
-                            input#titulo.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(placeholder="Titulo de la propiedad, ej. Casa en la playa" type="text" name="titulo") 
+                            input#titulo.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(placeholder="Titulo de la propiedad, ej. Casa en la playa" type="text" name="titulo" value=datos.titulo?datos.titulo:'') 
                         div   
                             label.block.text-sm.text-gray-400.mb-3.font-bold(for="descripcion") Descripcion
-                            textarea#descripcion.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(placeholder="Descripcion de la propiedad" type="text" name="titulo") 
+                            textarea#descripcion.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(placeholder="Descripcion de la propiedad" type="text" name="descripcion")=datos.descripcion?datos.descripcion:'' 
 
                         div(class="md:flex md:gap-4 space-y-5 md:space-y-0")
                             div(class="md:w-1/2") 
@@ -34,13 +34,14 @@ block contenido
                                 select#categoria.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(name="categoria") 
                                     option(value="") -Seleccione la categoria-
                                     each categoria in categorias
-                                        option(value=categoria.id)=categoria.nombre
+                                        option(value=categoria.id selected=datos.categoria? datos.categoria==categoria.id ? true:false:null)=categoria.nombre
+
                             div(class="md:w-1/2")   
                                 label.block.text-sm.text-gray-400.mb-3.font-bold(for="categoria") Precio
                                 select#precio.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(name="precio") 
                                     option(value="") -Seleccione el precio-
                                     each precio in precios 
-                                        option(value=precio.id)=precio.nombre 
+                                        option(value=precio.id selected=datos.precio? datos.precio==precio.id ? true: false: null)=precio.nombre 
                         div(class="md:flex md:gap-4 space-y-5 md:space-y-0")
                             div(class="md:w-1/3") 
                                 label.block.text-sm.text-gray-400.mb-3.font-bold(for="habitaciones") Habitaciones
@@ -48,7 +49,7 @@ block contenido
                                     option(value="") -Cantidad de habitaciones-
                                     - let n_hab=1
                                         while n_hab < 15
-                                            option(value=n_hab) #{n_hab++}
+                                            option(value=n_hab selected=datos.habitaciones? datos.habitaciones==n_hab?true:false:null) #{n_hab++}
 
                             div(class="md:w-1/3")   
                                 label.block.text-sm.text-gray-400.mb-3.font-bold(for="estacionamientos") Estacionamientos
@@ -56,25 +57,24 @@ block contenido
                                     option(value="") -Cantidad de estacionamientos-
                                     - let n_estc=1
                                         while n_estc < 5
-                                            option(value=n_estc) #{n_estc++}
-
+                                            option(value=n_estc selected=datos.estacionamientos? datos.estacionamientos==n_estc?true:false:null) #{n_estc++}
                             div(class="md:w-1/3")   
                                 label.block.text-sm.text-gray-400.mb-3.font-bold(for="wc") Baños
                                 select#wc.w-full.px-2.py-2.border.border-gray-300.rounded-md.placeholder-gray-400.outline-none(name="wc") 
                                     option(value="") -Cantidad de Baños-
                                     - let n_wc=1
                                         while n_wc < 9
-                                            option(value=n_wc) #{n_wc++}
+                                            option(value=n_wc selected=datos.wc? datos.wc==n_wc? true:false:null) #{n_wc++}
                     div.border-gray-200.border-t.py-5.space-y-5
                         h3.text-lg.leading-6.font-medium.text-gray-900 Ubicacion
                         p.text.gray-600 Ubica la propiedad en el mapa
                         #mapa.h-96
 
                         div
-                            p.calle
-                        input(type="hidden" name="calle" id="calle")
-                        input(type="hidden" name="lat"   id="lat")
-                        input(type="hidden" name="lng"   id="lng")
+                            p.calle=datos.calle?datos.calle:''
+                        input(type="hidden" name="calle" id="calle"  value=datos.calle?datos.calle:'')
+                        input(type="hidden" name="lat"   id="lat"   value=datos.lat?datos.lat:'')
+                        input(type="hidden" name="lng"   id="lng"  value=datos.lng?datos.lng:'')
 
                     input(class="w-full bg-indigo-600 py-3 text-white uppercase rounded text-center font-bold cursor-pointer hover:bg-indigo-700" type="submit" value="Añadir Imagen")
 

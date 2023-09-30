@@ -2,8 +2,8 @@
 (
     function() {
     
-    const lat = -16.5230037;
-    const lng = -68.1415526;
+    const lat = document.querySelector('#lat').value || -16.5230037;
+    const lng = document.querySelector('#lng').value || -68.1415526;
     const mapa = L.map('mapa').setView([lat, lng ], 15); // el numero 15 es el zoom del mapa
     let marker
 
@@ -19,7 +19,7 @@
         draggable:true, // permite mover el pin 
         autoPan:true    // sigue el mapa
     }).addTo(mapa)
-
+    
      /**
      * movemos el pin de ubicacion 
      */

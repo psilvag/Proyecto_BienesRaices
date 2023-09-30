@@ -11,6 +11,16 @@
  // Hacemos la validacion del campo Titulo en el routing usando body
  router.post('/propiedades/crear',
     body('titulo').notEmpty().withMessage('El titulo es obligatorio'),
+    body('descripcion')
+         .notEmpty().withMessage('La descripcion es obligatoria')
+         .isLength({max:150}).withMessage('La descripcion es muy larga, 150 caracteres max'),
+    body('categoria').isNumeric().withMessage('Categoria obligatoria'),
+    body('precio').isNumeric().withMessage('Selecciona el rango de precios'),
+    body('habitaciones').isNumeric().withMessage('Selecciona el numero de habitaciones'),
+    body('estacionamientos').isNumeric().withMessage('Selecciona la cantidad de estacionamientos'),
+    body('wc').isNumeric().withMessage('Selecciona la cantidad de baños'),
+    body('lat').notEmpty().withMessage('Selecciona la ubicacion en el mapa'),
+    body('lng').notEmpty().withMessage('Selecciona la ubicacion en el mapa'),
     guardar)
  
  
