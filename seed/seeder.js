@@ -1,10 +1,12 @@
  import {exit} from "node:process"
  import categorias from "./categorias.js"
  import precios from "./precios.js"
+ import usuarios from "./usuarios.js"
  import db from "../config/DB.js"
 //  import Categoria from "../models/categoria.js"
 //  import Precio from "../models/precio.js"
- import {Categoria,Precio} from "../models/index.js" // importamos los modelos con sus relaciones
+ import {Categoria,Precio,Usuario} from "../models/index.js" // importamos los modelos con sus relaciones
+
 
  const importarDatos= async ()=>{
     try{
@@ -15,7 +17,8 @@
         // insertar datos
         await Promise.all([ 
             Categoria.bulkCreate(categorias),
-            Precio.bulkCreate(precios)    
+            Precio.bulkCreate(precios),
+            Usuario.bulkCreate(usuarios)    
         ])// Promise.all recibe un array de promesas y devuelve VALIDO si todas las promesas se cumplen
         console.log("datos importados correctamente");
         exit() // cuando es 0, la funcion termino de forma correcta, si es exit (1) termino con error

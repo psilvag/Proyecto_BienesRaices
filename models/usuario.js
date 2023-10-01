@@ -26,12 +26,19 @@ import bcrypt from 'bcrypt'
     },
     {  
     // Cuando damos al boton crear cuenta el "usuario" pasa por esta funcion y hashea el password
-    hooks:{
+    hooks:{// los hooks son funciones que se puede agregar a cierto modelo
         beforeCreate:async function(usuario){
     // El valor 10 significa 10 rondas, rondas de hasheo cuanto mas grande mejor pero consume recursos
     // gensalt generar saltos
         const salt= await bcrypt.genSalt(10) 
         usuario.password= await bcrypt.hash(usuario.password,salt)
+        }
+      },
+      scopes:{// los scopes sirven para eliminar ciertos campos al hacer una consulta a un modelo
+        eliminarDatosdePayload:{
+            attributes:{
+                exclude:['password','token','confirmado','createdAt','updatedAt']
+            }
         }
       }
     })

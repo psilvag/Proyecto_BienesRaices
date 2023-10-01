@@ -3,13 +3,14 @@
  const router=express.Router()
  import {admin,crear, guardar} from '../controllers/propiedadController.js'
  import {body} from 'express-validator'
- 
+ import protegerRuta from '../middleware/protegerRuta.js'
 
- router.get('/mispropiedades',admin)
- router.get('/propiedades/crear',crear)
+ router.get('/mispropiedades',protegerRuta,admin)
+ router.get('/propiedades/crear',protegerRuta,crear)
 
  // Hacemos la validacion del campo Titulo en el routing usando body
  router.post('/propiedades/crear',
+    protegerRuta,
     body('titulo').notEmpty().withMessage('El titulo es obligatorio'),
     body('descripcion')
          .notEmpty().withMessage('La descripcion es obligatoria')
