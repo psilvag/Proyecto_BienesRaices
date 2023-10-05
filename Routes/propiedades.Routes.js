@@ -1,7 +1,7 @@
  
  import  express from "express"
  const router=express.Router()
- import {admin,crear, guardar} from '../controllers/propiedadController.js'
+ import {admin,crear, guardar,agregarImagen} from '../controllers/propiedadController.js'
  import {body} from 'express-validator'
  import protegerRuta from '../middleware/protegerRuta.js'
 
@@ -23,7 +23,8 @@
     body('lat').notEmpty().withMessage('Selecciona la ubicacion en el mapa'),
     body('lng').notEmpty().withMessage('Selecciona la ubicacion en el mapa'),
     guardar)
- 
+   
+    router.get('/propiedades/agregar-imagen/:id',agregarImagen)
  
  export default router
 

@@ -187,7 +187,7 @@ await check('password').notEmpty().withMessage('Password obligatorio').run(req)
    const token=generarJWT({id:usuario.id,nombre:usuario.nombre})
 
    //Almacenar token en un COOKIE
-   return res.cookie('_token',token,{
+   return res.cookie('_token',token,{ 
       httpOnly:true,   // esto evita que no sea accesible desde la api de javascript
       //secure:true,   // si es que tenemos un certificado SSL
       //sameSite:true  // si es que tenemos un certificado SSL
