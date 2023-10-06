@@ -1,9 +1,11 @@
  
  import  express from "express"
  const router=express.Router()
- import {admin,crear, guardar,agregarImagen} from '../controllers/propiedadController.js'
+ import {admin,crear, guardar,agregarImagen, almacenarImagen} from '../controllers/propiedadController.js'
  import {body} from 'express-validator'
  import protegerRuta from '../middleware/protegerRuta.js'
+ import upload from '../middleware/subirImagen.js'
+
 
  router.get('/mispropiedades',protegerRuta,admin)
  router.get('/propiedades/crear',protegerRuta,crear)
@@ -25,6 +27,11 @@
     guardar)
    
     router.get('/propiedades/agregar-imagen/:id',protegerRuta,agregarImagen)
-    router.post()
+
+    // la palabra imagen de upload.single() es la misma que esta en la configuracion dropzone de entrada agregarImagen.js para webpack, si se desea subir varias imagene es upload.array()
+    router.post('/propiedades/agregar-imagen/:id',protegerRuta,upload.single('imagen'),almacenarImagen)
+
+
+
  export default router
 

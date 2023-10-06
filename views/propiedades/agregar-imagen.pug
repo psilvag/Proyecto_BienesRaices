@@ -2,7 +2,7 @@ extends ../Layout/admin
 
 block styles
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.css")
-
+    meta(name="csrf-token" content=csrfToken)
 block contenido 
      div.py-10
             h1.text-4xl.my-10.font-extrabold.text-center Bienes 
@@ -13,7 +13,7 @@ block contenido
                 form(id="imagen" class="dropzone border-dashed border-2 w-full min:h-96 h-auto flex-col rounded justify-center items-center" method="POST" action=`/propiedades/agregar-imagen/${propiedad.id}`)
                     input(type="hidden" name="_csrf" value=csrfToken)
 
-                input(class="w-full bg-indigo-600 py-3 text-white uppercase rounded text-center font-bold cursor-pointer hover:bg-indigo-700 mt-5" type="submit" value="Publicar propiedad")
+                button(id="publicar" class="w-full bg-indigo-600 py-3 text-white uppercase rounded text-center font-bold cursor-pointer hover:bg-indigo-700 mt-5" type="button") Publicar Imagen
 
 
 block scripts

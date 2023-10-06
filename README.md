@@ -118,3 +118,7 @@ en otra terminal , ejecución de la base de datos
 
 -----------ENLACE A MAILTRAP: https://mailtrap.io/home autenticado con correo mmusk100@gmail.com
 
+8. Instalar la dependencia dropzone para cargar archivos
+   npm i dropzone@5.9.3
+9. Instalar la dependencia multer 
+   npm i multer

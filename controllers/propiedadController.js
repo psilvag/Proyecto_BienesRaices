@@ -92,13 +92,41 @@ const agregarImagen=async(req,res)=>{
     }
     res.render('propiedades/agregar-imagen',{
        pagina:`Agregar imagen: ${propiedad.titulo}`,
-       propiedad
+       propiedad,
+       csrfToken:req.csrfToken()
     })
+ }
+
+ const almacenarImagen=async (req,res,next)=>{
+
+    const {id}= req.params
+    const propiedad= await Propiedad.findByPk(id)
+    if(!propiedad){
+        res.redirect('/mispropiedades')
+    } 
+    if(propiedad.publicado){
+        res.redirect('/mispropiedades')
+    }
+    if(propiedad.usuarioId.toString()!==req.usuario.id.toString()){
+      res.redirect('/mispropiedades')
+    }
+    try {
+        propiedad.imagen=req.file.filename
+        propiedad.publicado=1
+        await propiedad.save()
+        next()
+
+    } catch (error) {
+        console.log(error);
+    }
+
+
  }
 
 export{
     admin,
     crear,
     guardar,
-    agregarImagen
+    agregarImagen,
+    almacenarImagen
 }
