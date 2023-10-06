@@ -3,7 +3,8 @@ import path from 'path' // usamos los paquetes internos de node, importando path
 export default {
     mode:'development',
     entry:{    // la entrada del archivo original
-        mapa:'./src/js/mapa.js'
+        mapa:'./src/js/mapa.js',
+        agregarImagen:'./src/js/agregarImagen.js'
     },
     output:{   // donde se guardara el archivo compilado
     filename:'[name].js',

@@ -24,7 +24,7 @@
     body('lng').notEmpty().withMessage('Selecciona la ubicacion en el mapa'),
     guardar)
    
-    router.get('/propiedades/agregar-imagen/:id',agregarImagen)
- 
+    router.get('/propiedades/agregar-imagen/:id',protegerRuta,agregarImagen)
+    router.post()
  export default router
 
